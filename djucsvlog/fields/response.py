@@ -1,5 +1,6 @@
 #response.status_code,response._headers['content-type'][1]
 from djucsvlog import settings
+from djucsvlog.fields.tools import readable_dict
 
 def status(request,response):
     return response.status_code
@@ -9,5 +10,4 @@ def content(request,response):
     return response._headers['content-type'][1].lower() in settings.RESPONSE_CONTENT_LOG_TYPES and response.content or ''
 
 def headers(request,response):
-    import json
-    return json.dumps(response._headers)
+    return readable_dict(response._headers)

@@ -32,7 +32,7 @@ def svars(frame,exR):
     ret = ''
     for v in vars:
         ret += '\n'+json_dump_line(v[0]) + ':'+ json_dump_line(unicoder_truncate(v[1],my_settings.EXCEPTION_VARS_MAX_LENGTH))+','
-    return '{'+ ret[:-1]+'}'
+    return '{\n'+ ret[:-1]+'\n}'
 
 def emeta(exception,exR):
     return 'meta'
