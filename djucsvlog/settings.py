@@ -72,3 +72,18 @@ get('CHANGE_MODEL_LOG_UPDATED','up')
 get('CHANGE_MODEL_LOG_DELETED','dl')
 
 get('CHANGE_MODEL_PROPS_DELETE',['pk'])
+
+###
+# Logging integration
+###
+['err','imp','inf','log','trc','dbg']
+get('LOGGING_LEVELS',{
+    'DEBUG':'dbg',
+    'INFO':'log',
+    'WARN':'inf',
+    'WARNING':'inf',
+    'ERROR':'imp',
+    'FATAL':'imp',
+    'CRITICAL':'err'
+})
+get('LOGGING_STACK_SIZE', 6)
