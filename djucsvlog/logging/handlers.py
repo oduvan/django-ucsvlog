@@ -16,5 +16,5 @@ class UCSVLogHandler(logging.Handler):
 
         from djucsvlog import settings
         log_name = settings.LOGGING_LEVELS[record.levelname]
-        getattr(self.glog, log_name)(msg)
+        getattr(self.glog, log_name)(msg, settings.LOGGING_STACK_SIZE)
 
