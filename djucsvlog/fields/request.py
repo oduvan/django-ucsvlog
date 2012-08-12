@@ -9,7 +9,7 @@ def language_code(request):
     return getattr(request,'LANGUAGE_CODE','')
 
 def get(request):
-    return readable_dict(request.GET) 
+    return readable_dict(request.GET)
 
 def post(request):
     return readable_dict(request.POST)
@@ -19,8 +19,8 @@ def files(request):
         return '{}'
     ret = ''
     for field,file in request.FILES.items():
-        ret += '\n"%s":%s,' %(field,readable_list([file.name,file.content_type,file.size]))
-    return '{'+ret[:-1]+'\n}'
+        ret += '\n%s:%s,' %(json_dump_line(field),readable_list([file.name,file.content_type,file.size]))
+    return '{\n'+ret[:-1]+'\n}'
 
 def cookies(request):
     return readable_dict(request.COOKIES)
@@ -29,15 +29,15 @@ def request_form_data(request):
     ret = ''
     r_get = get(request)
     if r_get != '{}':
-        ret+='\n"G":'+r_get+','
+        ret+='\n\'G\':'+r_get+','
     
     r_post = post(request)
     if r_post != '{}':
-        ret+='\n"P":'+r_post+','
+        ret+='\n\'P\':'+r_post+','
     
     r_files = files(request)
     if r_files != '{}':
-        ret+='\n"F":'+r_files+','
+        ret+='\n\'F\':'+r_files+','
     if not ret:
         return '{}'
     return '{'+ret[:-1]+'\n}'
@@ -51,9 +51,9 @@ def request_data(request):
         return ret
     
     if ret == '{}':
-        return '{"C":'+r_cookies+'}'
+        return '{\'C\':'+r_cookies+'}'
 
-    return ret[:-1] + ',"C":'+r_cookies+'}'
+    return ret[:-1] + ',\'C\':'+r_cookies+'}'
 
 def userid(request):
     return (request.user.id or '0')
@@ -126,14 +126,14 @@ def save_files(request):
     ret = ''
     for field,file in request.FILES.items():
         store_filename = find_place_to_store(file.name)
-        ret += '\n"%s":%s,' %(field,readable_list([file.name,store_filename,file.content_type,file.size]))
+        ret += '\n%s:%s,' %(json_dump_line(field),readable_list([file.name,store_filename,file.content_type,file.size]))
         
         fh = open(store_filename,'wb')
         for piece in read_in_chunks(file.file):
             fh.write(piece)
         fh.close()
     
-    return '{'+ret+'}'
+    return '{\n'+ret+'\n}'
         
 def http_referer(request):
     return request.META.get('HTTP_REFERER','')
