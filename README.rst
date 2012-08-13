@@ -142,12 +142,21 @@ right before view will be called. In this fields we can save all info collected 
 
 Default value is ['userid'].
 
-All posible functions to store in ``UCSVLOG_REQUEST_FILEDS`` you can find at 
+All posible functions to store in ``UCSVLOG_VIEW_OPEN_FIELDS`` you can find at 
 `djucsvlog/fields/view_open.py <https://github.com/oduvan/django-ucsvlog/blob/master/djucsvlog/fields/view_open.py>`_
 
+``UCSVLOG_RESPONSE_FIELDS`` in this field we can log all response info.
 
+Default value is ['status','ctype','content'].
 
+Some of not so obvious fields
 
+    * ``ctype`` - content type of response
+    
+    * ``content`` - full content response. Will be saved in case the content type of this response will be on of UCSVLOG_RESPONSE_CONTENT_LOG_TYPES ( Default value is ['text/json','text/xml','application/json','application/xml'] )
+
+All posible functions to store in ``UCSVLOG_RESPONSE_FIELDS`` you can find at 
+`djucsvlog/fields/response.py <https://github.com/oduvan/django-ucsvlog/blob/master/djucsvlog/fields/response.py>`_
 
 
 ============================
