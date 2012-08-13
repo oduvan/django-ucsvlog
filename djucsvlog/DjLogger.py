@@ -47,28 +47,3 @@ class DjLogger(Logger):
         return my_settings.LOG_BASE
     def iget_close_row(self):
         return my_settings.LOG_CLOSE_ROW
-    
-    
-    
-
-if my_settings.THREAD_LOCALS:
-    try:
-        from threading import local
-    except ImportError:
-        from django.utils._threading_local import local
-    
-    _thread_locals = local()
-    _thread_locals.aindex_stack = []
-    _thread_locals.aindex = ''
-    
-    def set_aindex(self,val):
-        _thread_locals.aindex = val
-    def get_aindex(self):
-        return _thread_locals.aindex
-    def get_aindex_stack(self):
-        return _thread_locals.aindex_stack
-    
-    DjLogger.set_aindex = set_aindex
-    DjLogger.get_aindex = get_aindex
-    DjLogger.get_aindex_stack = get_aindex_stack
-    

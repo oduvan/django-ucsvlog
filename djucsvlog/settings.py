@@ -23,7 +23,6 @@ get('BUFFERING',0)
 get('FLUSH_RESPONSE',True)
 get('LOG_BASE',['stacksize','filename','lineno','fname']) # list of fields, which will be show in every log line
 get('PRINT',False)
-get('THREAD_LOCALS',False)
 get('RELATED_FOLDER',None)
 get('FILE',None)
 get('LOG_CLOSE_ROW',None) # replace it by close mark
