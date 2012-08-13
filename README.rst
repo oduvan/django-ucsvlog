@@ -137,6 +137,18 @@ Some of not so obvious fields
     
     * ``remote_addr`` - user's IP address. It is getting from REMOTE_ADDR. But if REMOTE_ADDR doesn't exist then will be using a key stored in ``UCSVLOG_REQ_REMOTE_ADDR_ANONYMOUSE``
 
+``UCSVLOG_VIEW_OPEN_FIELDS`` - this fileds are storing in the last middleware ( LogViewInfo ),
+right before view will be called. In this fields we can save all info collected after all middlewares
+
+Default value is ['userid'].
+
+All posible functions to store in ``UCSVLOG_REQUEST_FILEDS`` you can find at 
+`djucsvlog/fields/view_open.py <https://github.com/oduvan/django-ucsvlog/blob/master/djucsvlog/fields/view_open.py>`_
+
+
+
+
+
 
 ============================
 Other configuration settings
