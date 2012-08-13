@@ -134,6 +134,8 @@ Some of not so obvious fields
     * ``browser_uuid`` - simple ID which is stored in cookie for identify a different browsers in logs
 
     * ``save_files`` - save all submited files in folder ``UCSVLOG_REQ_SAVE_FILES_FOLDER``
+    
+    * ``remote_addr`` - user's IP address. It is getting from REMOTE_ADDR. But if REMOTE_ADDR doesn't exist then will be using a key stored in ``UCSVLOG_REQ_REMOTE_ADDR_ANONYMOUSE``
 
 
 ============================
