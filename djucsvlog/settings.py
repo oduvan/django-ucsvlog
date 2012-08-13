@@ -10,13 +10,11 @@ get('EXCEPTION_MIDDLE_NAME','IN')
 get('VIEW_OPEN_FIELDS',['userid'])
 get('REQUEST_FIELDS', ['http_host', 'browser_uuid', 'remote_addr', 'path', 'get', 'post', 'files', 'http_user_agent',
                             'http_referer', 'http_accept_language']) # request logged fields
-get('RESPONSE_FIELDS',['ctype','content','status']) #response logged fields
-get('RESPONSE_CONTENT_LOG_TYPES',['text/json','text/xml','application/json','application/xml'])
+get('RESPONSE_FIELDS',['status','ctype','content']) #response logged fields
 get('EXCEPTION_FIELDS',['estr','etype'])
 get('EXCEPTION_STACK_FIELDS',['sfunction','sfilename','slineno','svars'])
 get('EXCEPTION_VARS_MAX_LENGTH',100)
 get('EXCEPTION_CLOSE',['emeta'])
-get('COUNT_FIELDS',0) #max count fields in log
 get('LOG_NAMES',['err','imp','inf','log','trc','dbg']) #name of logs, wich will be logged
 get('LOG_NAMES_AV',['err','imp','inf','log','trc','dbg']) # all names of logs, wich already using in code
 get('LOG_DEF','log') #default log name, wich will be called when loggaer used without attributes
@@ -48,6 +46,10 @@ get('REQ_SAVE_FILES_FOLDER',None)
 #Browser uuid middleware
 get('BROWSER_UUID_COOKIE','ucsvlog_follow')
 get('BROWSER_UUID_COOKIE_MAX_AGE',60*60*24*256) #cookie for one year
+
+##
+#RESPONSE
+get('RESPONSE_CONTENT_LOG_TYPES',['text/json','text/xml','application/json','application/xml'])
 
 
 ##
