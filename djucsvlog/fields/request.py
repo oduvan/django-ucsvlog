@@ -55,9 +55,6 @@ def request_data(request):
 
     return ret[:-1] + ',\'C\':'+r_cookies+'}'
 
-def userid(request):
-    return (request.user.id or '0')
-
 def sessionid(request):
     if hasattr(request, 'session'):
         return request.session._session_key

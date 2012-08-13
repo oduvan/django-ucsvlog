@@ -8,7 +8,8 @@ get('VIEW_LOG_NAME','IN')
 get('EXCEPTION_TOP_NAME','TOP')
 get('EXCEPTION_MIDDLE_NAME','IN')
 get('VIEW_OPEN_FIELDS',['userid'])
-get('REQUEST_FIELDS',['remote_addr','path','request_form_data','http_user_agent']) # request logged fields
+get('REQUEST_FIELDS', ['http_host', 'browser_uuid', 'remote_addr', 'path', 'get', 'post', 'files', 'http_user_agent',
+                            'http_referer', 'http_accept_language']) # request logged fields
 get('RESPONSE_FIELDS',['ctype','content','status']) #response logged fields
 get('RESPONSE_CONTENT_LOG_TYPES',['text/json','text/xml','application/json','application/xml'])
 get('EXCEPTION_FIELDS',['estr','etype'])

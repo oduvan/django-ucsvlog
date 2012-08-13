@@ -8,9 +8,8 @@ from django.http import Http404
 from django.db import transaction
 from glog import glog
 import settings as my_settings
-from djucsvlog.fields import request as request_fields
-from djucsvlog.fields import response as response_fields
-from djucsvlog.fields import exception_info as exception_fields
+from djucsvlog.fields import request as request_fields, response as response_fields, view_open as view_open_fields,\
+                        exception_info as exception_fields
 
 
 class LogRequestInfo(object):
@@ -74,7 +73,7 @@ class LogViewInfo(object):
         return super(LogViewInfo,self).__init__(*args,**kwargs)
         
     def process_request(self,request):
-        self.mid_a_log(my_settings.VIEW_LOG_NAME,arr_funcs_call(arr_lambda_by_name(my_settings.VIEW_OPEN_FIELDS,request_fields),request))
+        self.mid_a_log(my_settings.VIEW_LOG_NAME,arr_funcs_call(arr_lambda_by_name(my_settings.VIEW_OPEN_FIELDS,view_open_fields),request))
     
         
         
