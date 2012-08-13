@@ -16,7 +16,7 @@ Requirements
 Installation
 ============
 
-* Install ``django-rq``::
+* Install ``django-ucsvlog``::
 
     *IN WORK*
 
