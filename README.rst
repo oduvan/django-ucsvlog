@@ -158,6 +158,28 @@ Some of not so obvious fields
 All posible functions to store in ``UCSVLOG_RESPONSE_FIELDS`` you can find at 
 `djucsvlog/fields/response.py <https://github.com/oduvan/django-ucsvlog/blob/master/djucsvlog/fields/response.py>`_
 
+``UCSVLOG_EXCEPTION_FIELDS``, ``UCSVLOG_EXCEPTION_STACK_FIELDS`` and ``UCSVLOG_EXCEPTION_CLOSE`` are using for storing all exception information
+
+``UCSVLOG_LOG_BASE`` - list of field wich will be sored for every log record. It is an information about place of calling of log function. 
+This fields are using only by `python-ucsvlog`
+
+Default value is ['stacksize','filename','lineno','fname'].
+
+
+Writting your own fields
+________________________
+
+Insted of passing string name of predefined function you can pass link on your own function or string name for importing this function ( like in TEMPLATE_CONTEXT_PROCESSORS )
+
+But in function from different field are passing diferent arguments
+
+   * ``UCSVLOG_REQUEST_FIELDS`` - request
+
+   * ``UCSVLOG_RESPONSE_FIELDS`` - request, response
+
+   * ``UCSVLOG_VIEW_OPEN_FIELDS`` - request
+
+
 
 ============================
 Other configuration settings
