@@ -97,11 +97,11 @@ Usage
 About how to use `python-ucsvlog`_ or `logging <http://docs.python.org/library/logging.html>`_
 in your code you can read in their own documentation..
 
-The main difference now, is that you can use lists in calling logging functions for example
+The main difference now, is that you can use lists in calling logging functions for example::
 
     logger.info(['SectionName', 'History'])
 
-You can also use global ucsvlog object
+You can also use global ucsvlog object::
 
     from djucsvlog import glog
     glog('Something happens')
@@ -110,6 +110,31 @@ You can also use global ucsvlog object
     glog('Name', 'Alexander')
     glog('LName', 'Lyabah')
     glog.c_log('USER_INFO')
+
+
+
+Middleware logs
+_______________
+
+Every user's request collecting in logs. If the following settings you can configure what exactly info you want to save.
+
+``UCSVLOG_REQUEST_FIELDS`` - this fields are storing in the first middleware ( LogRequestInfo ), 
+before the others middleware will be called. 
+In this fields we can save all request information, such as user's ip, 
+browser version, GET or POST data etc. 
+
+Default value is ['http_host', 'browser_uuid', 'remote_addr', 'path', 'get', 
+'post', 'files', 'http_user_agent','http_referer', 'http_accept_language']
+
+All posible functions to store in ``UCSVLOG_REQUEST_FILEDS`` you can find at 
+`djucsvlog/fields/request.py <https://github.com/oduvan/django-ucsvlog/blob/master/djucsvlog/fields/request.py>`_
+
+Some of not so obvious fields
+
+    * ``browser_uuid`` - simple ID which is stored in cookie for identify a different browsers in logs
+
+    * ``save_files`` - save all submited files in folder ``UCSVLOG_REQ_SAVE_FILES_FOLDER``
+
 
 ============================
 Other configuration settings
