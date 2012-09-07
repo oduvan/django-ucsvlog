@@ -97,7 +97,7 @@ Usage
 About how to use `python-ucsvlog`_ or `logging <http://docs.python.org/library/logging.html>`_
 in your code you can read in their own documentation..
 
-The main difference now, is that you can use lists in calling logging functions for example::
+The main difference now, is that you can use list in calling logging functions for example::
 
     logger.info(['SectionName', 'History'])
 
@@ -116,11 +116,11 @@ You can also use global ucsvlog object::
 Middleware logs
 _______________
 
-Every user's request collecting in logs. If the following settings you can configure what exactly info you want to save.
+Every user's request is saved in logs. In the following settings you can configure which exact info you want to save.
 
-``UCSVLOG_REQUEST_FIELDS`` - this fields are storing in the first middleware ( LogRequestInfo ), 
-before the others middleware will be called. 
-In this fields we can save all request information, such as user's ip, 
+``UCSVLOG_REQUEST_FIELDS`` -these are the fields of request which will store data in logs. These fields will store date
+in the first middleware  ( LogRequestInfo )  until the other middlewares will be called.
+In these fields we can save all request information, such as user's ip, 
 browser version, GET or POST data etc. 
 
 Default value is ['http_host', 'browser_uuid', 'remote_addr', 'path', 'get', 
@@ -129,39 +129,39 @@ Default value is ['http_host', 'browser_uuid', 'remote_addr', 'path', 'get',
 All posible functions to store in ``UCSVLOG_REQUEST_FILEDS`` you can find at 
 `djucsvlog/fields/request.py <https://github.com/oduvan/django-ucsvlog/blob/master/djucsvlog/fields/request.py>`_
 
-Some of not so obvious fields
+Some not so obvious fields
 
-    * ``browser_uuid`` - simple ID which is stored in cookie for identify a different browsers in logs
+    * ``browser_uuid`` - simple ID which is stored in cookies to identify different browsers in logs
 
     * ``save_files`` - save all submited files in folder ``UCSVLOG_REQ_SAVE_FILES_FOLDER``
     
-    * ``remote_addr`` - user's IP address. It is getting from REMOTE_ADDR. But if REMOTE_ADDR doesn't exist then will be using a key stored in ``UCSVLOG_REQ_REMOTE_ADDR_ANONYMOUSE``
+    * ``remote_addr`` - user's IP address that is received from request.META['REMOTE_ADDR']. But if it doesn't exist then a key stored in ``UCSVLOG_REQ_REMOTE_ADDR_ANONYMOUSE`` will be used. 
 
-``UCSVLOG_VIEW_OPEN_FIELDS`` - this fileds are storing in the last middleware ( LogViewInfo ),
-right before view will be called. In this fields we can save all info collected after all middlewares
+``UCSVLOG_VIEW_OPEN_FIELDS`` - these fields are stored in the last middleware ( LogViewInfo ),
+right before view will be called. In these fields we can save all info collected after all middlewares will be called
 
 Default value is ['userid'].
 
 All posible functions to store in ``UCSVLOG_VIEW_OPEN_FIELDS`` you can find at 
 `djucsvlog/fields/view_open.py <https://github.com/oduvan/django-ucsvlog/blob/master/djucsvlog/fields/view_open.py>`_
 
-``UCSVLOG_RESPONSE_FIELDS`` in this field we can log all response info.
+``UCSVLOG_RESPONSE_FIELDS`` in these fields we can log all response info.
 
 Default value is ['status','ctype','content'].
 
-Some of not so obvious fields
+Some not so obvious fields
 
     * ``ctype`` - content type of response
     
-    * ``content`` - full content response. Will be saved in case the content type of this response will be on of UCSVLOG_RESPONSE_CONTENT_LOG_TYPES ( Default value is ['text/json','text/xml','application/json','application/xml'] )
+    * ``content`` - full content response. It will be saved in case the content type of this response will be one of UCSVLOG_RESPONSE_CONTENT_LOG_TYPES ( Default value is ['text/json','text/xml','application/json','application/xml'] )
 
 All posible functions to store in ``UCSVLOG_RESPONSE_FIELDS`` you can find at 
 `djucsvlog/fields/response.py <https://github.com/oduvan/django-ucsvlog/blob/master/djucsvlog/fields/response.py>`_
 
-``UCSVLOG_EXCEPTION_FIELDS``, ``UCSVLOG_EXCEPTION_STACK_FIELDS`` and ``UCSVLOG_EXCEPTION_CLOSE`` are using for storing all exception information
+``UCSVLOG_EXCEPTION_FIELDS``, ``UCSVLOG_EXCEPTION_STACK_FIELDS`` and ``UCSVLOG_EXCEPTION_CLOSE`` are used for storing all exception information
 
-``UCSVLOG_LOG_BASE`` - list of field wich will be sored for every log record. It is an information about place of calling of log function. 
-This fields are using only by `python-ucsvlog`
+``UCSVLOG_LOG_BASE`` - list of fields which will be stored for every log record. It is an information about the place of  log's function calling. 
+These fields are used only by `python-ucsvlog`
 
 Default value is ['stacksize','filename','lineno','fname'].
 
@@ -169,9 +169,9 @@ Default value is ['stacksize','filename','lineno','fname'].
 Writting your own fields
 ________________________
 
-Insted of passing string name of predefined function you can pass link on your own function or string name for importing this function ( like in TEMPLATE_CONTEXT_PROCESSORS )
+Insted of passing string name of predefined function you can pass a link to your own function or a string name for importing this function ( like in TEMPLATE_CONTEXT_PROCESSORS )
 
-But in function from different field are passing diferent arguments
+But in functions for different fields diferent arguments are passed.
 
    * ``UCSVLOG_REQUEST_FIELDS`` - request
 
@@ -185,13 +185,13 @@ But in function from different field are passing diferent arguments
 Other configuration settings
 ============================
 
-List of all possible settings you can find in file `djucsvlog/settings.py <https://github.com/oduvan/django-ucsvlog/blob/master/djucsvlog/settings.py>`_
+List of all possible settings you can find in the file `djucsvlog/settings.py <https://github.com/oduvan/django-ucsvlog/blob/master/djucsvlog/settings.py>`_
 
 Line::
 
     get('PRINT',False)
 
-Means that with setting can be overriden in your settings.py file by UCSVLOG_PRINT setting.
+It means that this setting can be overriden in your settings.py file by UCSVLOG_PRINT setting.
 
 ==============
 Other packages
