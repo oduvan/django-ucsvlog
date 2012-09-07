@@ -1,3 +1,9 @@
+'''
+djucsvlog.components.sql
+
+Stores all sql requests for a debug mode ( DEBUG = True )
+'''
+
 from django.db.backends import util
 from djucsvlog.middleware import glog
 import time

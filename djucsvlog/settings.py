@@ -18,14 +18,17 @@ get('EXCEPTION_CLOSE',['emeta'])
 get('LOG_NAMES',['err','imp','inf','log','trc','dbg']) #name of logs, wich will be logged
 get('LOG_NAMES_AV',['err','imp','inf','log','trc','dbg']) # all names of logs, wich already using in code
 get('LOG_DEF','log') #default log name, wich will be called when loggaer used without attributes
-get('COMPONENTS',())
-get('BUFFERING',0)
-get('FLUSH_RESPONSE',True)
+get('COMPONENTS',()) # additional components for auto saving data in logs.
+                    # default components you can find at djucsvlog.components.*
+                    #Example:
+                    #   UCSVLOG_COMPONENS = ('djucsvlog.components.sql_debug', 'djucsvlog.components.change_model')
+get('BUFFERING',0) # buffering logs before saving. This setting is used in codecs.open
+get('FLUSH_RESPONSE',True) # flushes all logs from buffer to file after request is finished
 get('LOG_BASE',['stacksize','filename','lineno','fname']) # list of fields, which will be show in every log line
-get('PRINT',False)
-get('RELATED_FOLDER',None)
+get('PRINT',False) # print logs instead of save
+get('RELATED_FOLDER',None) #  file names will be saved relatively to this folder
 get('FILE',None)
-get('LOG_CLOSE_ROW',None) # replace it by close mark
+get('LOG_CLOSE_ROW',None) # replaces it by a close mark ( using for python-ucsvlog )
 
 
 ##
@@ -68,6 +71,7 @@ get('CLEAR_OLD_ARCHIVE',None)
 get('CHANGE_MODEL',None)
 get('CHANGE_MODEL_LOG','log')
 
+#the rules of storing of change model information
 get('CHANGE_MODEL_LOG_START','CM')
 get('CHANGE_MODEL_LOG_CREATED','cr')
 get('CHANGE_MODEL_LOG_UPDATED','up')

@@ -1,3 +1,24 @@
+'''
+djucsvlog.components.change_model
+
+saves all changes in a model
+
+all models and fields should be set in UCSVLOG_CHANGE_MODEL.
+
+For example:
+
+UCSVLOG_CHANGE_MODEL = [
+    {
+        'model':'statistics.Banner', # app.model
+        'props':['pk','name','campaign.pk','campaign','picture.url'] # property of objects
+    },
+    {
+        'model':'statistics.UserProfile',
+        'props':['user.pk','user.username','balance']
+    }
+]
+'''
+
 from djucsvlog import glog
 from djucsvlog import settings as S
 
