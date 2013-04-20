@@ -13,6 +13,15 @@ else:
     Logger = OriginalLogger
 
 
+try:
+    from threading import local
+except ImportError:
+    from django.utils._threading_local import local
+
+
+_thread_locals = local()
+
+
 class DjLogger(Logger):
     def_req_log = None #fields, which will be logged in request
     def_res_log = None #fields, which will be logged in response
@@ -29,7 +38,7 @@ class DjLogger(Logger):
                     self.iget_related_folder(),
                     close_row = self.iget_close_row()
                 )
-            
+
     
     def iget_related_folder(self):
         return my_settings.RELATED_FOLDER    
@@ -47,3 +56,11 @@ class DjLogger(Logger):
         return my_settings.LOG_BASE
     def iget_close_row(self):
         return my_settings.LOG_CLOSE_ROW
+
+    def get_aindex_stack(self):
+        try:
+            return _thread_locals.aindex_stack
+        except AttributeError:
+            _thread_locals.aindex_stack = []
+            return _thread_locals.aindex_stack
+

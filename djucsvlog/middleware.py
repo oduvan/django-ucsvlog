@@ -30,8 +30,6 @@ class LogRequestInfo(object):
     
     def process_request(self,request):
         
-        glog.aindex_stack = [] #clear stack if it is not empty
-        #TODO: figure out why it can be?
         self.mid_a_log(my_settings.REQ_LOG_NAME,arr_funcs_call(self.def_req_log,request))
     def process_response(self,request,response):
         self.mid_c_log(my_settings.REQ_LOG_NAME,arr_funcs_call(self.def_res_log,request,response))
