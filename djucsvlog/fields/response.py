@@ -5,8 +5,13 @@ from djucsvlog.fields.tools import readable_dict
 def status(request,response):
     return response.status_code
 def ctype(request,response):
+    if response.status_code == 304:
+        return ''
     return response._headers['content-type'][1]
+
 def content(request,response):
+    if response.status_code == 304:
+        return ''
     return response._headers['content-type'][1].lower() in settings.RESPONSE_CONTENT_LOG_TYPES and response.content or ''
 
 def headers(request,response):
